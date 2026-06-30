@@ -1,0 +1,40 @@
+site_name: Единый Портал Документации
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - search.highlight
+
+plugins:
+  - search
+  # - with-pdf:
+  #     cover: true
+  #     cover_title: Единый Портал Документации
+  #     output_path: /MkDocs/docs.pdf
+  - multirepo:
+      cleanup: true
+      repos:
+        - section: Руководства
+          import_url: https://github.com/DenisLonskii/docs-guides.git?branch=main&docs_dir=docs
+        - section: Сравнение конвертеров
+          import_url: https://github.com/DenisLonskii/docs-comparison.git?branch=main&docs_dir=docs
+
+nav:
+  - Главная: index.md
+  - Моя страница: my_first_page.md
+  - Руководства: '!import https://github.com/DenisLonskii/docs-guides.git?branch=main'
+  - Сравнение конвертеров: '!import https://github.com/DenisLonskii/docs-comparison.git?branch=main'
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+          
+extra_javascript:
+  - javascripts/mermaid.min.js
+  - javascripts/mermaid-init.js
+
+use_directory_urls: true
