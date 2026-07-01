@@ -28,21 +28,23 @@ pipeline {
                 }
 
                 echo 'Копируем файлы документации из дочерних репозиториев в общую папку docs/...'
-                if (isUnix()) {
-                    sh '''
-                        mkdir -p docs/guides docs/comparison
-                        cp -r tmp_guides/docs/* docs/guides/
-                        cp -r tmp_comparison/docs/* docs/comparison/
-                        rm -rf tmp_guides tmp_comparison
-                    '''
-                } else {
-                    bat '''
-                        if not exist docs\\guides mkdir docs\\guides
-                        if not exist docs\\comparison mkdir docs\\comparison
-                        xcopy /E /I /Y tmp_guides\\docs\\* docs\\guides\\
-                        xcopy /E /I /Y tmp_comparison\\docs\\* docs\\comparison\\
-                        rmdir /S /Q tmp_guides tmp_comparison
-                    '''
+                script {
+                    if (isUnix()) {
+                        sh '''
+                            mkdir -p docs/guides docs/comparison
+                            cp -r tmp_guides/docs/* docs/guides/
+                            cp -r tmp_comparison/docs/* docs/comparison/
+                            rm -rf tmp_guides tmp_comparison
+                        '''
+                    } else {
+                        bat '''
+                            if not exist docs\\guides mkdir docs\\guides
+                            if not exist docs\\comparison mkdir docs\\comparison
+                            xcopy /E /I /Y tmp_guides\\docs\\* docs\\guides\\
+                            xcopy /E /I /Y tmp_comparison\\docs\\* docs\\comparison\\
+                            rmdir /S /Q tmp_guides tmp_comparison
+                        '''
+                    }
                 }
             }
         }
