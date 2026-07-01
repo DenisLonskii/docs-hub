@@ -8,23 +8,28 @@ theme:
 
 plugins:
   - search
-  # - with-pdf:
-  #     cover: true
-  #     cover_title: Единый Портал Документации
-  #     output_path: /MkDocs/docs.pdf
-  - multirepo:
-      cleanup: true
-      repos:
-        - section: Руководства
-          import_url: https://github.com/DenisLonskii/docs-guides.git?branch=main&docs_dir=docs
-        - section: Сравнение конвертеров
-          import_url: https://github.com/DenisLonskii/docs-comparison.git?branch=main&docs_dir=docs
 
 nav:
   - Главная: index.md
   - Моя страница: my_first_page.md
-  - Руководства: '!import https://github.com/DenisLonskii/docs-guides.git?branch=main'
-  - Сравнение конвертеров: '!import https://github.com/DenisLonskii/docs-comparison.git?branch=main'
+  - Руководства:
+      - Начало работы:
+          - Установка: guides/getting-started/installation.md
+          - Функции: guides/getting-started/features.md
+      - UML Диаграммы:
+          - UML Диаграмма(mermaid): guides/uml/diagrams.md
+          - UML Диаграмма(jpg): guides/uml/diagrams_jpg.md
+          - UML Диаграмма gpu (jpg): guides/uml/diagrams_gpu_jpg.md
+      - Помощь:
+          - FAQ: guides/help/faq.md
+          - Как помочь: guides/help/contributing.md
+  - Сравнение конвертеров:
+      - Marker (из PDF): comparison/сomparison/marker_pdf.md
+      - Marker gpu (из PDF): comparison/сomparison/marker_gpu_pdf.md
+      - MarkItDown (из Word): comparison/сomparison/markitdown_docx.md
+      - MarkItDown (из PDF): comparison/сomparison/markitdown_pdf.md
+      - Pandoc (из Word): comparison/сomparison/pandoc_docx.md
+      - pymupdf4llm (из PDF): comparison/сomparison/pymupdf4llm_pdf.md
 
 markdown_extensions:
   - pymdownx.superfences:
