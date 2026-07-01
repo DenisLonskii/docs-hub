@@ -13,18 +13,18 @@ pipeline {
             steps {
                 echo 'Скачиваем дочерние репозитории во временные директории...'
                 
-                // 1. Скачиваем репозиторий Руководств (замените URL и credentialsId при необходимости)
+                // 1. Скачиваем репозиторий Руководств
                 dir('tmp_guides') {
                     git branch: 'main',
-                        url: 'https://github.com/your-org/docs-guides.git'
-                        // credentialsId: 'github-docs-token' // раскомментируйте, если репозиторий приватный
+                        credentialsId: 'git',
+                        url: 'https://github.com/DenisLonskii/docs-guides.git'
                 }
                 
                 // 2. Скачиваем репозиторий Сравнений
                 dir('tmp_comparison') {
                     git branch: 'main',
-                        url: 'https://github.com/your-org/docs-comparison.git'
-                        // credentialsId: 'github-docs-token' // раскомментируйте, если репозиторий приватный
+                        credentialsId: 'git',
+                        url: 'https://github.com/DenisLonskii/docs-comparison.git'
                 }
 
                 echo 'Копируем файлы документации из дочерних репозиториев в общую папку docs/...'
