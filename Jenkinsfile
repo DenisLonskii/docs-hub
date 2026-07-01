@@ -17,14 +17,14 @@ pipeline {
                 dir('tmp_guides') {
                     git branch: 'main',
                         credentialsId: 'git',
-                        url: 'https://github.com/DenisLonskii/docs-guides.git'
+                        url: 'git@github.com:DenisLonskii/docs-guides.git'
                 }
                 
                 // 2. Скачиваем репозиторий Сравнений
                 dir('tmp_comparison') {
                     git branch: 'main',
                         credentialsId: 'git',
-                        url: 'https://github.com/DenisLonskii/docs-comparison.git'
+                        url: 'git@github.com:DenisLonskii/docs-comparison.git'
                 }
 
                 echo 'Копируем файлы документации из дочерних репозиториев в общую папку docs/...'
